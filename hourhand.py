@@ -1,8 +1,10 @@
 from tkinter import *
 from time import strftime
+
 root = Tk()
 root.geometry("300x300")
 root.title(" Minute converter ")
+
 
 
 def time():
@@ -11,11 +13,10 @@ def time():
     label.after(1000, time)
 
 
-label = Label(root, font=("ds-digital", 80), bg="black", fg="red")
-label.pack(anchor="center")
+label = Label( font=("ds-digital", 20), bg="black", fg="red")
+label.pack(anchor="ne")
 
-def clearToTextInput():
-   Output.delete("1.0","end")
+
 def Take_input():
     m = inputtxt.get("1.0", "end-1c")
     m=int(m)
@@ -43,7 +44,9 @@ def Take_input():
             Output.insert(END, "%.0f" % tmd, "Minutes")
             Output.insert(END,  "Minutes")
 
-
+def clearToTextInput():
+   Output.delete("1.0","end")
+   inputtxt.delete("1.0","end")
 l = Label(text="Converting Minutes to Hours",bg="black",fg="white")
 inputtxt = Text(root, height=3,
                 width=15,
@@ -59,12 +62,13 @@ Display = Button(root,fg="red", height=0,
                  command=lambda: Take_input())
 button=Button(root,height=1,width=10, text="Clear",command=clearToTextInput)
 
-button.pack()
+
 
 l.pack()
 inputtxt.pack()
 time()
 Display.pack()
 Output.pack()
+button.pack()
 
 mainloop()
